@@ -5,5 +5,5 @@ class Input(BaseModel):
     year: int = Field(
         ...,
         description="Year to find the per capita income",
-        validation_alias=AliasChoices("year", "x"),
+        
     )
