@@ -1,6 +1,7 @@
 from fastapi import FastAPI,HTTPException
 from fastapi.responses import JSONResponse
 from model.model import model_load,MODEL_VERSION,predict as model_predict
+from schema.input import Input
 
 app = FastAPI()
 
@@ -15,7 +16,8 @@ def health():
         'model load' : model_load
     }
 @app.post('/predict')
-def predict(x:int):
+def predict(input:Input):
+    x = input.year
     if 1000 <= x <= 9999:
         try :
             prediction = model_predict(x)
