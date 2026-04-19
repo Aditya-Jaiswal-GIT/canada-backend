@@ -1,3 +1,9 @@
-from pydantic import BaseModel,Field
+from pydantic import AliasChoices, BaseModel, Field
+
+
 class Input(BaseModel):
-    year : int = Field(...,description="Year to find the per capita income")
+    year: int = Field(
+        ...,
+        description="Year to find the per capita income",
+        validation_alias=AliasChoices("year", "x"),
+    )
